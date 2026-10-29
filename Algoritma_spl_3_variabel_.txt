@@ -1,0 +1,19 @@
+ALGORITMA PENYELESAIAN SISTEM PERSAMAAN LINEAR 3 VARIABEL
+
+Metode: Eliminasi Gauss
+
+Tujuan:
+Menentukan nilai x, y, dan z dari tiga persamaan linear.
+
+Langkah-langkah:
+
+1. Mulai.
+2. Masukkan koefisien dan konstanta dari tiga persamaan linear.
+3. Susun koefisien ke dalam matriks augmented.
+4. Lakukan eliminasi Gauss untuk mengubah matriks menjadi bentuk segitiga atas.
+5. Periksa apakah sistem persamaan memiliki solusi yang dapat ditentukan.
+6. Hitung nilai z menggunakan substitusi balik.
+7. Hitung nilai y berdasarkan nilai z.
+8. Hitung nilai x berdasarkan nilai y dan z.
+9. Tampilkan nilai x, y, dan z.
+10. Selesai.
