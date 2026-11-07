@@ -1,0 +1,105 @@
+# =====================================================
+# PROGRAM PENYELESAIAN SPL 3 VARIABEL
+# MENGGUNAKAN METODE ELIMINASI GAUSS
+#
+# Nama          : Apriana Roswitha Loko
+# Program Studi : Teknik Informatika
+# Mata Kuliah   : Komputasi Numerik
+# =====================================================
+
+
+# BAGIAN 1: MEMASUKKAN DATA PERSAMAAN
+# Matriks augmented berisi koefisien x, y, z
+# dan nilai konstanta dari tiga persamaan.
+
+A = [
+    [2.0, 1.0, 1.0, 10.0],
+    [1.0, 2.0, 1.0, 11.0],
+    [1.0, 1.0, 2.0, 12.0]
+]
+
+# Menentukan jumlah variabel yang digunakan.
+n = 3
+
+# Menampilkan matriks awal sebelum eliminasi.
+print("MATRIKS AWAL:")
+for baris in A:
+    print(baris)
+
+
+# BAGIAN 2: PROSES ELIMINASI GAUSS
+# Mengubah matriks menjadi bentuk segitiga atas.
+
+for i in range(n):
+
+    # Menentukan nilai pivot atau elemen utama.
+    pivot = A[i][i]
+
+    # Memeriksa apakah pivot bernilai nol.
+    if pivot == 0:
+        raise ValueError("Pivot bernilai nol.")
+
+    # Membagi baris pivot agar elemen utamanya menjadi 1.
+    for j in range(i, n + 1):
+        A[i][j] = A[i][j] / pivot
+
+    # Menghilangkan elemen di bawah pivot.
+    for k in range(i + 1, n):
+
+        # Menentukan faktor pengali eliminasi.
+        faktor = A[k][i]
+
+        # Mengurangi baris menggunakan baris pivot.
+        for j in range(i, n + 1):
+            A[k][j] = A[k][j] - faktor * A[i][j]
+
+
+# Menampilkan matriks setelah proses eliminasi.
+print("\nMATRIKS SETELAH ELIMINASI GAUSS:")
+for baris in A:
+    print(baris)
+
+
+# BAGIAN 3: SUBSTITUSI BALIK
+# Menghitung nilai variabel mulai dari z, y, kemudian x.
+
+# Menghitung nilai variabel z.
+z = A[2][3] / A[2][2]
+
+# Menghitung nilai variabel y berdasarkan nilai z.
+y = (A[1][3] - A[1][2] * z) / A[1][1]
+
+# Menghitung nilai variabel x berdasarkan nilai y dan z.
+x = (A[0][3] - A[0][1] * y - A[0][2] * z) / A[0][0]
+
+
+# BAGIAN 4: MENAMPILKAN HASIL PERHITUNGAN
+# Menampilkan nilai akhir ketiga variabel.
+
+print("\nHASIL PENYELESAIAN SPL:")
+print("Nilai x =", x)
+print("Nilai y =", y)
+print("Nilai z =", z)
+
+
+# BAGIAN 5: PEMERIKSAAN HASIL
+# Memasukkan kembali nilai x, y, dan z
+# ke dalam persamaan awal untuk memeriksa hasil.
+
+print("\nPEMERIKSAAN HASIL:")
+
+print("Persamaan 1:", 2*x + y + z)
+print("Persamaan 2:", x + 2*y + z)
+print("Persamaan 3:", x + y + 2*z)
+
+
+# BAGIAN 6: KESIMPULAN
+# Menampilkan kesimpulan dari program.
+
+print("\nKESIMPULAN:")
+print("Program berhasil menyelesaikan SPL 3 variabel.")
+print("Metode yang digunakan adalah Eliminasi Gauss.")
+print("Hasil akhir:")
+print("x =", x)
+print("y =", y)
+print("z =", z)
